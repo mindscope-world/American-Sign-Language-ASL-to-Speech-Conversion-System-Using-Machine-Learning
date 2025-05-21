@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ASL Fingerspelling Recognition</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <!-- MediaPipe JS Files -->
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils/camera_utils.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/control_utils/control_utils.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/drawing_utils/drawing_utils.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/hands/hands.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/pose/pose.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div class="main-container">
+        <header>
+            <div class="logo">ASL<span class="logo-accent">Recog</span></div>
+            <!-- Simple nav placeholder, can be expanded -->
+            <nav>
+                <a href="#uploadSection" class="nav-link">Upload File</a>
+                <a href="#webcamSection" class="nav-link">Webcam</a>
+            </nav>
+        </header>
+
+        <div class="hero-section">
+            <h1>
+                ASL Fingerspelling<br>
+                <span class="agency-pink">Recognition</span><span class="agency-orange">.</span>
+            </h1>
+            <p class="hero-subtitle">
+                Utilizing advanced AI to translate sign language gestures from Parquet files or your webcam.
+            </p>
+        </div>
+        
+        <div class="mode-selection">
+            <button id="uploadModeBtn" class="mode-btn active">Upload Parquet File</button>
+            <button id="webcamModeBtn" class="mode-btn">Use Webcam</button>
+        </div>
+
+        <!-- Upload Parquet Section -->
+        <div id="uploadSection" class="mode-content active-content card">
+            <h2>Upload Parquet File</h2>
+            <p>
+                Upload a Parquet file containing ASL landmark data for a <strong>single sign sequence</strong>.
+            </p>
+            <div class="upload-controls">
+                <input type="file" id="parquetFile" accept=".parquet">
+                <button id="predictParquetButton" class="action-button">Predict from File</button>
+            </div>
+        </div>
+
+        <!-- Webcam Section -->
+        <div id="webcamSection" class="mode-content card">
+            <h2>Webcam Sign Detection</h2>
+            <div class="webcam-controls">
+                <button id="startWebcamButton" class="action-button">Start Webcam</button>
+                <button id="stopWebcamButton" class="action-button secondary-action" disabled>Stop Webcam</button>
+                <button id="capturePredictButton" class="action-button" disabled>Capture & Predict (3s)</button>
+            </div>
+            <div class="video-container">
+                <video id="webcamVideo" autoplay playsinline muted></video>
+                <canvas id="webcamCanvas" class="output_canvas"></canvas>
+            </div>
+            <p><i>Allow webcam access. Position your hands clearly in the frame.</i></p>
+        </div>
+        
+        <div id="resultsSection" class="card" style="display: none;">
+            <h2>Predicted Phrase:</h2>
+            <p id="predictionResult" class="prediction-box">---</p>
+        </div>
+        
+        <p id="statusMessage" class="status-message"></p>
+        <p id="errorMessage" class="error-message"></p>
+        
+        <footer class="footer-note">
+            Inspired by the "Web3 Design Agency" theme. <br>
+            Based on: <a href="https://www.kaggle.com/code/columbia2131/asl-fingerspelling-recognition-w-tensorflow" target="_blank">ASL Fingerspelling Recognition with TensorFlow (Kaggle)</a>
+        </footer>
+    </div>
+    <script src="/static/script.js"></script>
+</body>
+</html>
