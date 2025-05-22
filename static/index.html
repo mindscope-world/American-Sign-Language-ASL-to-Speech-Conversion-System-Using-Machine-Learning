@@ -16,28 +16,22 @@
     <div class="main-container">
         <header>
             <div class="logo">ASL<span class="logo-accent">Recog</span></div>
-            <!-- Simple nav placeholder, can be expanded -->
             <nav>
-                <a href="#uploadSection" class="nav-link">Upload File</a>
-                <a href="#webcamSection" class="nav-link">Webcam</a>
+                <button id="uploadModeBtnNav" class="nav-link active">Upload File</button>
+                <button id="webcamModeBtnNav" class="nav-link">Webcam</button>
             </nav>
         </header>
 
         <div class="hero-section">
             <h1>
-                ASL Fingerspelling<br>
+                American Sign Language(ASL) to Text to Speech<br>
                 <span class="agency-pink">Recognition</span><span class="agency-orange">.</span>
             </h1>
             <p class="hero-subtitle">
-                Utilizing advanced AI to translate sign language gestures from Parquet files or your webcam.
+                Utilizing advanced AI to translate sign language gestures from Parquet files or your webcam, with audio playback.
             </p>
         </div>
         
-        <div class="mode-selection">
-            <button id="uploadModeBtn" class="mode-btn active">Upload Parquet File</button>
-            <button id="webcamModeBtn" class="mode-btn">Use Webcam</button>
-        </div>
-
         <!-- Upload Parquet Section -->
         <div id="uploadSection" class="mode-content active-content card">
             <h2>Upload Parquet File</h2>
@@ -68,14 +62,16 @@
         <div id="resultsSection" class="card" style="display: none;">
             <h2>Predicted Phrase:</h2>
             <p id="predictionResult" class="prediction-box">---</p>
+            <button id="playSpeechButton" class="action-button secondary-action" style="display: none; margin-top: 15px;">🔊 Play Speech</button>
+            <audio id="audioPlayback" style="display: none;"></audio> 
         </div>
         
         <p id="statusMessage" class="status-message"></p>
         <p id="errorMessage" class="error-message"></p>
         
         <footer class="footer-note">
-            Inspired by the "Web3 Design Agency" theme. <br>
-            Based on: <a href="https://www.kaggle.com/code/columbia2131/asl-fingerspelling-recognition-w-tensorflow" target="_blank">ASL Fingerspelling Recognition with TensorFlow (Kaggle)</a>
+            Copyright ©Mindscope 2025. <br>
+            Based on: <a href="https://www.kaggle.com/code/columbia2131/asl-fingerspelling-recognition-w-tensorflow" target="_blank">ASL Fingerspelling Recognition with TensorFlow (Kaggle) Data</a>
         </footer>
     </div>
     <script src="/static/script.js"></script>
